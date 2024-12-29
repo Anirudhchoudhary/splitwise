@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Expense Details{% endblock %}
+
+{% block content %}
+<h1>Expense Details</h1>
+<p>Expense Name: {{ expense.name }}</p>
+<p>Expense Description: {{ expense.description }}</p>
+<p>Expense Amount: {{ expense.amount }}</p>
+<p>Expense Group: {{ expense.expenses.all.first.name }}</p>
+<p>Expense Category: {{ expense.category }}</p>
+<p>Expense Paid By: {{ expense.paid_by }}</p>
+<ul>
+    {% for split in expense.splits.all %}
+        <li>{{ split.user.username }} - {{ split.amount }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
